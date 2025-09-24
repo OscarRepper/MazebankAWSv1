@@ -1,0 +1,36 @@
+<!-- login.component.html -->
+<main class="auth">
+  <div class="auth__card" role="form" aria-labelledby="titulo-login">
+    <img src="/public/img/logo-mb.png" alt="Logo MB" class="auth__logo" />
+    <h1 id="titulo-login" class="auth__title">Iniciar sesión</h1>
+
+    <!-- Evitamos submit real del form para que use solo routerLink -->
+    <form class="form" autocomplete="on" (ngSubmit)="login()">
+      <label for="email" class="form__label">Correo</label>
+      <input id="email" type="email" class="form__input" placeholder="Ingresa tu correo" name="email" [(ngModel)]="email" main-menu/>
+
+      <label for="password" class="form__label">Contraseña</label>
+      <input id="password" type="password" class="form__input" placeholder="Ingresa tu contraseña" name="password" [(ngModel)]="password" required />
+
+      <div class="form__row">
+        <label class="checkbox"> 
+          <input type="checkbox" />
+          <span>Recordarme</span>
+        </label>
+
+        <!-- Cambia la ruta si tienes una página de recuperación -->
+        <a class="link" [routerLink]="'/recuperar'">¿Olvidaste tu contraseña?</a>
+      </div>
+
+      <!-- IMPORTANTE: type="button" para que no intente enviar el form -->
+      <button type="submit" class="btn btn--primary">
+        Entrar
+      </button>
+    </form>
+
+    <!-- Botón extra que pediste -->
+    <button type="button" class="btn btn--ghost" [routerLink]="'/main-menu'">
+      MAINMENU
+    </button>
+  </div>
+</main>
