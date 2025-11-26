@@ -1,0 +1,238 @@
+/* PALETA DE COLORES MAZEBANK (Mantenida) */
+:root {
+    --color-primary: #990000;
+    --color-secondary: #333333;
+    --color-background: #000000;
+    --color-white: #ffffff;
+    --color-text: #555;
+    --color-strong-text: #000000;
+    --color-sidebar-bg: #000000;
+    --color-icon-bg: #990000;
+    --color-border: #951b1b;
+    --color-success: #1e8449;
+    --color-alert: #d9534f;
+    --color-info: #3498db;
+}
+
+/* ESTILOS BASE Y SIDEBAR */
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-sidebar-bg);
+    color: var(--color-secondary);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--color-border);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: normal;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.logo .maze {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.logo .bank {
+    font-family: 'Open Sans', 'Roboto', sans-serif;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.nav-links a {
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color: var(--color-secondary);
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    background-color: #f0f0f0;
+}
+
+.nav-links a:nth-child(3) {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-weight: bold;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.content-area {
+    flex-grow: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-card {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    flex-grow: 1;
+    padding: 30px;
+}
+
+.content-header {
+    width: 100%;
+    text-align: left;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.content-header h1 {
+    margin: 0;
+    color: var(--color-secondary);
+    font-size: 26px;
+}
+
+.content-header p {
+    font-size: 14px;
+    color: var(--color-text);
+    margin-top: 5px;
+}
+
+/* --- FORMULARIO DE SOLICITUD --- */
+.form-section {
+    padding: 20px 0;
+    border-bottom: 1px dashed var(--color-border);
+    margin-bottom: 20px;
+}
+
+.form-section h2 {
+    color: var(--color-primary);
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.form-section h2 span {
+    margin-right: 10px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-strong-text);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-group input[type="file"] {
+    border-style: dashed;
+    cursor: pointer;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+/* Estilo para los Checkboxes Legales */
+.legal-checkbox {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.legal-checkbox input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    flex-shrink: 0;
+    /* Evita que el checkbox se encoja */
+}
+
+.legal-checkbox label {
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.4;
+    color: var(--color-strong-text);
+}
+
+.legal-checkbox a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.legal-checkbox a:hover {
+    text-decoration: underline;
+}
+
+/* Botón de Envío */
+.btn-submit {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 15px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.2s;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-submit:disabled {
+    background-color: #000000;
+    cursor: not-allowed;
+}

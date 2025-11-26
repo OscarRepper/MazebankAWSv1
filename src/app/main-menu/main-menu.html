@@ -1,0 +1,97 @@
+<div id="body" class="container">
+  <!-- LADO IZQUIERDO -->
+  <section class="main-left">
+    <div class="left-body">
+      <!-- Logo centrado -->
+      <div class="logo">MAZE<span>BANK</span></div>
+
+      <!-- Bienvenida + buscador -->
+      <div class="welcome">
+        @if (cargando) {
+        <h2>¡Hola! Cargando…</h2>
+        } @else if (errorMsg) {
+        <h2>¡Hola! (no se pudo cargar tu nombre)</h2>
+        } @else {
+        <h2>¡Hola! {{ nombre || 'Usuario' }}</h2>
+        }
+
+        <p>Bienvenido a tu Banca en línea</p>
+        <div class="search-bar">
+          <img src="img/icon-lupa.png" alt="Buscar" />
+          <input type="text" placeholder="Busca una acción a realizar" />
+        </div>
+      </div>
+
+      <!-- MENÚ 3x2 (sin scripts) -->
+      <div class="menu-grid">
+        <div class="menu-box" routerLink="/transferir">
+          <img src="img/icon-transfer.png" alt="">Transferir
+        </div>
+        <div class="menu-box" routerLink="/servicio">
+          <img src="img/icon-pay.png" alt="">Pagar Servicio
+        </div>
+        <div class="menu-box" routerLink="/historial">
+          <img src="img/icon-history.png" alt="">Historial
+        </div>
+        <div class="menu-box" routerLink="/tarjetas">
+          <img src="img/icon-card.png" alt="">Tarjetas
+        </div>
+        <div class="menu-box" routerLink="/prestamos">
+          <img src="img/icon-loan.png" alt="">Préstamo
+        </div>
+        <div class="menu-box" routerLink="/main-menu">
+          <img src="img/icon-profile.png" alt="">Perfil
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LADO DERECHO (PERFIL FIJO) -->
+  <section class="main-right">
+    <div id="contenido-dinamico">
+      <div class="modal-container modal-square">
+        <div class="modal-header">
+          <h1>PERFIL</h1>
+        </div>
+
+        <div class="modal-content">
+          <div class="profile-avatar" aria-label="Avatar">👤</div>
+
+          @if (cargando) {
+          <div class="profile-info">
+            <div class="info-row">
+              <span class="label">Cargando</span>
+              <span class="value">Obteniendo datos del usuario…</span>
+            </div>
+          </div>
+          } @else if (errorMsg) {
+          <div class="profile-info">
+            <div class="info-row">
+              <span class="label">Error</span>
+              <span class="value">{{ errorMsg }}</span>
+            </div>
+          </div>
+          } @else {
+          <div class="profile-info">
+            <div class="info-row">
+              <span class="label">Nombre</span>
+              <span class="value">{{ nombre || '—' }}</span>
+            </div>
+            <div class="info-row">
+              <span class="label">Correo</span>
+              <span class="value">{{ email || '—' }}</span>
+            </div>
+          </div>
+          }
+
+          <div class="profile-actions">
+            <button class="btn-secondary">Editar</button>
+            <button class="btn-danger" (click)="cerrarSesion()">Cerrar sesión</button>
+          </div>
+        </div>
+
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </section>
+</div>

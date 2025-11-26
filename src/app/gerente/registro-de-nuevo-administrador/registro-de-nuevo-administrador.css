@@ -1,0 +1,188 @@
+        /* (CSS General y Sidebar del Ejecutivo se mantienen) */
+        :root {
+            --color-primary: #990000;
+            --color-secondary: #333333;
+            --color-background: #f4f4f4;
+            --color-white: #ffffff;
+            --color-text: #555;
+            --color-strong-text: #1a1a1a;
+            --color-sidebar-bg: #000000;
+            --color-icon-bg: #b30000;
+            --color-border: #eee;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Open Sans', 'Roboto', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: var(--color-sidebar-bg);
+            color: var(--color-white);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: normal;
+            text-align: center;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logo .maze {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-weight: bold;
+            color: var(--color-white);
+        }
+
+        .logo .bank {
+            font-family: 'Open Sans', 'Roboto', sans-serif;
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .user-info h3 {
+            margin: 0;
+            font-size: 18px;
+            color: var(--color-white);
+        }
+
+        .user-info p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+        }
+
+        .nav-icons-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .nav-icon-item {
+            background-color: var(--color-icon-bg);
+            border-radius: 6px;
+            padding: 15px 10px;
+            text-align: center;
+            color: var(--color-white);
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            font-size: 14px;
+            line-height: 1.2;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Ítem activo: Simula que la opción de crear personal está aquí */
+        .nav-icons-container .nav-icon-item:nth-child(6) {
+            background-color: var(--color-primary);
+            box-shadow: 0 0 0 3px var(--color-white);
+            font-weight: bold;
+        }
+
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        .content-area {
+            flex-grow: 1;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .main-card {
+            background-color: var(--color-white);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 650px;
+            padding: 30px;
+            height: fit-content;
+        }
+
+        .content-header {
+            width: 100%;
+            text-align: left;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--color-primary);
+        }
+
+        .content-header h1 {
+            margin: 0;
+            color: var(--color-secondary);
+            font-size: 28px;
+            text-transform: uppercase;
+        }
+
+        .content-header p {
+            font-size: 14px;
+            color: var(--color-text);
+            margin-top: 5px;
+        }
+
+        /* Estilos de Formulario */
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            color: var(--color-strong-text);
+            margin-bottom: 5px;
+        }
+
+        .form-input,
+        .form-select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Botón de Acción */
+        .btn-primary {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-top: 30px;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #080808;
+        }

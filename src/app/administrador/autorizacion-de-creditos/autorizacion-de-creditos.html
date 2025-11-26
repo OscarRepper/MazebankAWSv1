@@ -1,0 +1,129 @@
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="maze">MAZE</span><span class="bank">BANK</span>
+            </div>
+            
+            <div class="user-info">
+                <h3>Ejecutivo Juan Pérez</h3>
+                <p>ID: OP-1234</p>
+            </div>
+            
+                <div class="nav-icons-container">
+                <div class="nav-icon-item active">
+                    <img src="icons/autorizacion.png" alt="icono" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Autorizaciones
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/personal.png" alt="Personal" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Personal
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/clientes.png" alt="Clientes" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Clientes
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/informe.png" alt="Reportes" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Reportes
+                </div>
+            </div>
+
+            <div class="priority-filter-section">
+                <h4>Navegación Rápida</h4>
+                <a href="#creditos" class="priority-filter active">Autorización de Créditos</a>
+                <a href="#administrador" class="priority-filter"> Crear Personal</a>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="main-card">
+                <div class="content-header">
+                    <h1>MÓDULO DE AUTORIZACIONES Y GESTIÓN</h1>
+                    <p>Gestión centralizada de estatus de solicitudes y cuentas de personal.</p>
+                </div>
+                
+                <h2 id="creditos" class="section-title">1. Estatus de Solicitudes (Crédito y Tarjeta)</h2>
+                
+                <p>Utilice esta sección para cambiar el estatus operativo de solicitudes específicas.</p>
+
+                <h3 style="color: var(--color-strong-text); font-size: 16px; margin-top: 25px;">Estatus de Crédito/Préstamo</h3>
+                <div class="status-box">
+                    <div class="form-row">
+                        <label for="id-solicitud">ID Solicitud:</label>
+                        <input type="text" id="id-solicitud" placeholder="Ej: CRD-45678">
+                        
+                        <label for="nuevo-estatus-credito">Cambiar Estatus a:</label>
+                        <select id="nuevo-estatus-credito">
+                            <option value="pendiente">Pendiente de Revisión (Documental)</option>
+                            <option value="validacion">Validación de Fraude/Riesgo</option>
+                            <option value="aprobado">Aprobado</option>
+                            <option value="rechazado">Rechazado</option>
+                            <option value="en_proceso">En Proceso de Desembolso</option>
+                        </select>
+                        <button class="btn-action btn-primary">Actualizar Estatus</button>
+                    </div>
+                </div>
+
+                <h3 style="color: var(--color-strong-text); font-size: 16px; margin-top: 25px;">Estatus de Cambio de Tarjeta</h3>
+                <div class="status-box">
+                    <div class="form-row">
+                        <label for="id-tarjeta">ID Tarjeta/Cliente:</label>
+                        <input type="text" id="id-tarjeta" placeholder="Ej: TDC-12345">
+                        
+                        <label for="nuevo-estatus-tarjeta">Cambiar Estatus a:</label>
+                        <select id="nuevo-estatus-tarjeta">
+                            <option value="pendiente">Pendiente de Aprobación</option>
+                            <option value="emitida">Tarjeta Enviada (Emitida)</option>
+                            <option value="activacion">Lista para Activación</option>
+                            <option value="rechazado">Rechazada / Cancelada</option>
+                        </select>
+                        <button class="btn-action btn-primary">Actualizar Estatus</button>
+                    </div>
+                </div>
+
+                <hr style="margin: 40px 0; border: 0; border-top: 1px solid #ccc;">
+
+                <h2 id="administrador" class="section-title">2. Creación de Cuenta de Personal</h2>
+                
+                <p>Complete los siguientes campos para crear una nueva cuenta de personal interno (Ejecutivo, Gerente o Administrador).</p>
+
+                <form class="status-box admin-form">
+                    <div class="form-group">
+                        <label for="nombre">Nombre Completo:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Nombre y Apellidos" required>
+                    </div>
+                    
+                    <div class="form-row" style="margin-bottom: 0; align-items: stretch;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="rol">Rol Asignado:</label>
+                            <select id="rol" name="rol" required>
+                                <option value="admin_general">Administrador General</option>
+                                <option value="gerente">Gerente de Sucursal</option>
+                                <option value="ejecutivo">Ejecutivo de Operaciones</option>
+                            </select>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="usuario">ID de Empleado (Usuario Login):</label>
+                            <input type="text" id="usuario" name="usuario" placeholder="Ej: ADM-003 o GER-05" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row" style="margin-top: 15px; align-items: stretch;">
+                        <div class="form-group" style="flex: 1;">
+                            <label for="correo">Correo Electrónico:</label>
+                            <input type="email" id="correo" name="correo" placeholder="usuario@mazebank.com" required>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label for="contrasena">Contraseña Temporal:</label>
+                            <input type="password" id="contrasena" name="contrasena" placeholder="**********" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-action btn-submit">Crear y Asignar Cuenta</button>
+                </form>
+
+            </div>
+        </main>
+    </div>
+</body>

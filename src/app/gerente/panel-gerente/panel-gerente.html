@@ -1,0 +1,109 @@
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="maze">MAZE</span><span class="bank">BANK</span>
+            </div>
+            
+            <div class="user-info">
+                <h3>Gerente Ana Gómez</h3>
+                <p>Sucursal 001 - Central</p>
+            </div>
+            
+            <div class="nav-icons-container">
+                <div class="nav-icon-item active">
+                    <img src="icons/grafica.png" alt="Dashboard" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Dashboard General
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/usuario.png" alt="Gestión de Clientes" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Gestión de Clientes
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/autorizacion.png" alt="Supervisión de Crédito" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Supervisión de Crédito
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/informe.png" alt="Auditoría" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Auditoría y Logs
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/configuracion.png" alt="Configuración" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Configuración Admin
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/cerrar-sesion.png" alt="Cerrar Sesión" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Cerrar Sesión
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="main-card">
+                <div class="content-header">
+                    <h1>DASHBOARD DE VISIÓN GENERAL</h1>
+                    <p>Resumen de métricas clave y actividad reciente de la plataforma.</p>
+                </div>
+                
+                <div class="kpi-grid">
+                    
+                    <div class="kpi-card kpi-clientes" onclick="alert('Navegar a Gestión de Clientes')">
+                        <h3>Clientes Registrados</h3>
+                        <div class="kpi-value">12,450</div>
+                        <p>Total de usuarios activos en la plataforma.</p>
+                    </div>
+
+                    <div class="kpi-card kpi-creditos" onclick="alert('Navegar a Supervisión de Crédito')">
+                        <h3>Cartera de Crédito (USD)</h3>
+                        <div class="kpi-value">$ 15.2M</div>
+                        <p>Monto total de créditos vigentes.</p>
+                    </div>
+                    
+                    <div class="kpi-card kpi-tarjetas" onclick="alert('Navegar a Reportes de Tarjetas')">
+                        <h3>Tarjetas Activas</h3>
+                        <div class="kpi-value">18,120</div>
+                        <p>Incluye débito y crédito emitidas.</p>
+                    </div>
+                    
+                    <div class="kpi-card kpi-pendientes" onclick="alert('Navegar a Solicitudes Pendientes')">
+                        <h3>Solicitudes Pendientes</h3>
+                        <div class="kpi-value">45</div>
+                        <p>Créditos y tarjetas que requieren aprobación.</p>
+                    </div>
+                </div>
+
+                <h2>Actividad y Distribución</h2>
+                <div class="activity-section">
+                    
+                    <div class="chart-placeholder">
+                        [Aquí iría un gráfico de la **Distribución de Estatus de Solicitudes** o **Crecimiento de Clientes**]
+                    </div>
+                    
+                    <div class="recent-activity">
+                        <h3>Actividad Reciente</h3>
+                        <div class="activity-item">
+                            [14:50] Crédito CR-0012 a Laura D. fue Aprobado.
+                        </div>
+                        <div class="activity-item">
+                            [14:15] Nuevo cliente Juan S.registrado y verificado.
+                        </div>
+                        <div class="activity-item">
+                            [13:30] Tarjeta TDC-5544 fue Rechazada (Fraude).
+                        </div>
+                        <div class="activity-item">
+                            [12:05] Se creó la cuenta del Ejecutivo OP-1237.
+                        </div>
+                        <div class="activity-item">
+                            [11:00] Cliente Carlos R. solicitó cambio de tarjeta.
+                        </div>
+                        <div class="activity-item">
+                            [10:45] Alerta de Fraude en Transf. TSF-987.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-button">i</div>
+            </div>
+        </main>
+    </div>
+</body>

@@ -1,0 +1,238 @@
+<div id="body" class="container">
+  <!-- LADO IZQUIERDO -->
+  <section class="main-left">
+    <div class="left-body">
+      <div class="logo">MAZE<span>BANK</span></div>
+
+      <div class="welcome">
+        @if (cargando) {
+        <h2>¡Hola! Cargando…</h2>
+        } @else if (errorMsg) {
+        <h2>¡Hola! (no se pudo cargar tu nombre)</h2>
+        } @else {
+        <h2>¡Hola! {{ 'Usuario' }}</h2>
+        }
+
+        <p>Bienvenido a tu Banca en línea</p>
+        <div class="search-bar">
+          <img src="img/icon-lupa.png" alt="Buscar" />
+          <input type="text" placeholder="Busca una acción a realizar" />
+        </div>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-box" routerLink="/transferir">
+          <img src="img/icon-transfer.png" alt="">Transferir
+        </div>
+        <div class="menu-box" routerLink="/servicio">
+          <img src="img/icon-pay.png" alt="">Pagar Servicio
+        </div>
+        <div class="menu-box" routerLink="/historial">
+          <img src="img/icon-history.png" alt="">Historial
+        </div>
+        <div class="menu-box" routerLink="/tarjetas">
+          <img src="img/icon-card.png" alt="">Tarjetas
+        </div>
+        <div class="menu-box" routerLink="/prestamos">
+          <img src="img/icon-loan.png" alt="">Préstamo
+        </div>
+        <div class="menu-box" routerLink="/main-menu">
+          <img src="img/icon-profile.png" alt="">Perfil
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LADO DERECHO: PANEL TRANSFERENCIA -->
+  <section class="main-right">
+    <div id="contenido-dinamico">
+      <div class="modal-container modal-square tnx-v4" data-step="1">
+        <div class="tnx-header">
+          <h1>TRANSFERIR & DIMO®</h1>
+          <small class="tnx-steps">Pasos 1–4</small>
+        </div>
+
+        <div class="tnx-progress"><span class="bar"></span></div>
+
+        <div class="modal-content">
+          @if (cargando) { <div class="alert info">Procesando transferencia…</div> }
+          @if (errorMsg) { <div class="alert error">{{ errorMsg }}</div> }
+          @if (successMsg){ <div class="alert success">{{ successMsg }}</div> }
+
+          <section class="tnx-grid" aria-label="Flujo de transferencia">
+
+            <!-- 1 DESTINATARIO -->
+            <article class="tnx-card lift">
+              <header class="tnx-card-h">
+                <div class="icon-plate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path fill="#4d0101" d="M12 12a4.5 4.5 0 1 0-4.5-4.5A4.51 4.51 0 0 0 12 12Z" />
+                    <path fill="#4d0101" d="M4 19c0-3.3 4-5 8-5s8 1.7 8 5v1H4Z" />
+                  </svg>
+                </div>
+                <div class="tnx-titles">
+                  <h3>Destinatario</h3>
+                  <span class="k">1 de 4</span>
+                </div>
+              </header>
+
+              <div class="tnx-card-b">
+                <div class="row-2">
+                  <div class="field">
+                    <label for="dest-nombre">Nombre</label>
+                    <div class="pill">
+                      <input id="dest-nombre" type="text" [(ngModel)]="beneficiary_name" name="beneficiary_name"
+                        placeholder="Ej. Carlos Ramírez">
+                    </div>
+                  </div>
+
+                  <div class="field">
+                    <label for="dest-ref">Número de referencia</label>
+                    <div class="pill">
+                      <input id="dest-ref" type="text" inputmode="numeric" [(ngModel)]="beneficiary_account_ref"
+                        name="beneficiary_account_ref" placeholder="Ej. 700099887766554433">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="dest-banco">Banco del beneficiario (opcional)</label>
+                  <div class="pill">
+                    <input id="dest-banco" type="text" [(ngModel)]="beneficiary_bank" name="beneficiary_bank"
+                      placeholder="Ej. Banco Ejemplo">
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- 2 ORIGEN -->
+            <article class="tnx-card lift">
+              <header class="tnx-card-h">
+                <div class="icon-plate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="2" y="5" width="20" height="14" rx="2" fill="#4d0101"></rect>
+                    <rect x="2" y="9" width="20" height="3" fill="#ffffff"></rect>
+                  </svg>
+                </div>
+                <div class="tnx-titles">
+                  <h3>Origen</h3>
+                  <span class="k">2 de 4</span>
+                </div>
+              </header>
+
+              <div class="tnx-card-b">
+                <div class="field">
+                  <label for="cuenta-origen">Cuenta / Tarjeta</label>
+                  <div class="pill select">
+                    <select id="cuenta-origen" [(ngModel)]="origin_card_id" name="origin_card_id">
+                      <option [ngValue]="null" disabled>Selecciona una tarjeta…</option>
+                      <!-- Opciones de ejemplo; cambia por un *ngFor con tu catálogo -->
+                      <option [ngValue]="1">Nómina •••• 0001</option>
+                      <option [ngValue]="2">Crédito •••• 0002 </option>
+                      <option [ngValue]="3">Digital •••• 0003</option>
+                    </select>
+                    <span class="chev" aria-hidden="true">▾</span>
+                  </div>
+                </div>
+
+                @if (origin_card_id) {
+                <div class="info">
+                  <span class="tag">Se utilizará la cuenta/tarjeta seleccionada (ID: {{ origin_card_id }})</span>
+                </div>
+                }
+              </div>
+            </article>
+
+            <!-- 3 IMPORTE -->
+            <article class="tnx-card lift">
+              <header class="tnx-card-h">
+                <div class="icon-plate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="9" fill="#4d0101"></circle>
+                    <path d="M9 12h4a2 2 0 0 0 0-4H10M13 16H10a2 2 0 1 1 0-4h5" stroke="#fff" stroke-width="2"
+                      fill="none" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="tnx-titles">
+                  <h3>Importe</h3>
+                  <span class="k">3 de 4</span>
+                </div>
+              </header>
+
+              <div class="tnx-card-b">
+                <div class="field">
+                  <label for="importe">Cantidad a transferir</label>
+                  <div class="pill">
+                    <input id="importe" type="number" inputmode="decimal" step="0.01" [(ngModel)]="amount" name="amount"
+                      placeholder="Ej. 1250.00">
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- 4 CONCEPTO -->
+            <article class="tnx-card lift">
+              <header class="tnx-card-h">
+                <div class="icon-plate" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <rect x="5" y="4" width="14" height="16" rx="2" fill="#4d0101"></rect>
+                    <path d="M8 9h8M8 13h8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" />
+                  </svg>
+                </div>
+                <div class="tnx-titles">
+                  <h3>Concepto</h3>
+                  <span class="k">4 de 4</span>
+                </div>
+              </header>
+
+              <div class="tnx-card-b">
+                <div class="field">
+                  <label for="concepto">Concepto (opcional)</label>
+                  <div class="pill">
+                    <input id="concepto" type="text" [(ngModel)]="concept" name="concept"
+                      placeholder="Ej. Renta octubre / DIMO pedido #1234">
+                  </div>
+                </div>
+
+              </div>
+            </article>
+
+          </section>
+
+          <!-- RESUMEN + CTA -->
+          <section class="tnx-summary" aria-live="polite">
+            <div class="sum-left">
+              <h4>Importe a transferir</h4>
+              <div class="big">${{ amountSafe | number:'1.2-2' }}</div>
+              <div class="fees">Comisión: ${{ feeCalc | number:'1.2-2' }}</div>
+              <div class="fees">Total a debitar: ${{ totalCalc | number:'1.2-2' }}</div>
+            </div>
+
+            <div class="sum-right">
+              <!-- Mostrar botón transferir solo si no se ha realizado la transferencia -->
+              <button *ngIf="!transferenciaRealizada"
+                      class="tnx-cta"
+                      type="button"
+                      [disabled]="cargando"
+                      (click)="transferir()">
+                {{ cargando ? 'Procesando…' : 'Transferir' }}
+              </button>
+
+              <!-- Botón de comprobante solo cuando haya resultado -->
+              <button *ngIf="resultado && transferenciaRealizada"
+                      class="tnx-cta"
+                      type="button"
+                      (click)="abrirComprobante()">
+                Imprimir comprobante
+              </button>
+
+              <small class="safe-copy">Operación segura</small>
+            </div>
+          </section>
+        </div>
+
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,138 @@
+<div id="body" class="container">
+    <!-- LADO IZQUIERDO (igual que tus pantallas) -->
+    <section class="main-left">
+        <div class="left-body">
+            <div class="logo">MAZE<span>BANK</span></div>
+
+            <div class="welcome">
+                <h2>¡Hola! Juan Pérez</h2>
+                <p>Bienvenido a tu Banca en línea</p>
+                <div class="search-bar">
+                    <img src="img/icon-lupa.png" alt="Buscar" />
+                    <input type="text" placeholder="Busca una acción a realizar" />
+                </div>
+            </div>
+
+            <div class="menu-grid">
+                <div class="menu-box" routerLink="/transferir">
+                    <img src="img/icon-transfer.png" alt="">Transferir
+                </div>
+                <div class="menu-box" routerLink="/servicio">
+                    <img src="img/icon-pay.png" alt="">Pagar Servicio
+                </div>
+                <div class="menu-box" routerLink="/historial">
+                    <img src="img/icon-history.png" alt="">Historial
+                </div>
+                <div class="menu-box" routerLink="/tarjetas">
+                    <img src="img/icon-card.png" alt="">Tarjetas
+                </div>
+                <div class="menu-box" routerLink="/prestamos">
+                    <img src="img/icon-loan.png" alt="">Préstamo
+                </div>
+                <div class="menu-box" routerLink="/main-menu">
+                    <img src="img/icon-profile.png" alt="">Perfil
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LADO DERECHO — HISTORIAL -->
+    <section class="main-right">
+        <div id="contenido-dinamico">
+            <div class="modal-container modal-square hist-wrapper">
+                <header class="hist-header">
+                    <h1>RESUMEN DE INGRESOS Y GASTOS®</h1>
+                </header>
+
+                <div class="modal-content hist-content">
+                    <!-- ====== TARJETA INGRESOS ====== -->
+                    <section class="hist-card">
+                        <div class="hist-card-title">INGRESOS</div>
+                        <div class="hist-card-body">
+                            <ul class="hist-list">
+                                <!-- Ítem -->
+                                <li class="hist-item">
+                                    <div class="hist-icon">
+                                        <img src="img/ingreso.png" alt="Ingreso">
+                                    </div>
+                                    <div class="hist-info">
+                                        <div class="hist-row">
+                                            <span class="hist-name">INGRESO</span>
+                                            <span class="hist-suffix">-9433</span>
+                                        </div>
+                                        <div class="hist-meta">
+                                            Ingreso recibido: <strong>5 sep 2025</strong>
+                                        </div>
+                                    </div>
+                                    <div class="hist-amount pos">+ $200.00</div>
+                                </li>
+
+                                <li class="hist-item">
+                                    <div class="hist-icon">
+                                        <img src="img/ingreso.png" alt="Ingreso">
+                                    </div>
+                                    <div class="hist-info">
+                                        <div class="hist-row">
+                                            <span class="hist-name">INGRESO</span>
+                                            <span class="hist-suffix">-9433</span>
+                                        </div>
+                                        <div class="hist-meta">
+                                            Ingreso recibido: <strong>3 sep 2025</strong>
+                                        </div>
+                                    </div>
+                                    <div class="hist-amount pos">+ $200.00</div>
+                                </li>
+
+                                <!-- Más items vendrán del backend -->
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- ====== TARJETA GASTOS ====== -->
+                    <section class="hist-card">
+                        <div class="hist-card-title">GASTOS</div>
+                        <div class="hist-card-body">
+                            <ul class="hist-list">
+                                <li class="hist-item">
+                                    <div class="hist-icon">
+                                        <img src="img/gasto.png" alt="Gasto">
+                                    </div>
+                                    <div class="hist-info">
+                                        <div class="hist-row">
+                                            <span class="hist-name">CARGO GENERAL</span>
+                                            <span class="hist-suffix">-9433</span>
+                                        </div>
+                                        <div class="hist-meta">
+                                            Cargo realizado: <strong>5 sep 2025</strong>
+                                        </div>
+                                    </div>
+                                    <div class="hist-amount neg">- $200.00</div>
+                                </li>
+
+                                <li class="hist-item">
+                                    <div class="hist-icon">
+                                        <img src="img/gasto.png" alt="Gasto">
+                                    </div>
+                                    <div class="hist-info">
+                                        <div class="hist-row">
+                                            <span class="hist-name">COMPRA COMERCIAL</span>
+                                            <span class="hist-suffix">-9433</span>
+                                        </div>
+                                        <div class="hist-meta">
+                                            Cargo realizado: <strong>4 sep 2025</strong>
+                                        </div>
+                                    </div>
+                                    <div class="hist-amount neg">- $700.00</div>
+                                </li>
+
+                                <!-- Más items vendrán del backend -->
+                            </ul>
+                        </div>
+                    </section>
+                </div>
+
+                <footer class="modal-footer"></footer>
+            </div>
+        </div>
+    </section>
+</div>

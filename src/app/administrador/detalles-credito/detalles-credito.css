@@ -1,0 +1,263 @@
+/* PALETA DE COLORES MAZEBANK */
+:root {
+    --color-primary: #990000;
+    --color-secondary: #333333;
+    --color-background: #f4f4f4;
+    --color-white: #ffffff;
+    --color-text: #555;
+    --color-strong-text: #1a1a1a;
+    --color-sidebar-bg: #000000;
+    --color-icon-bg: #b30000;
+    --color-border: #eee;
+    --color-success: #1e8449;
+    /* Riesgo Bajo */
+    --color-alert: #d9534f;
+    /* Riesgo Alto */
+    --color-warning: #f0ad4e;
+    /* Riesgo Medio */
+    --color-info: #3498db;
+    /* Azul para Información */
+}
+
+/* ESTILOS BASE Y SIDEBAR (Reutilizados del diseño de Gerente) */
+* {
+    box-sizing: border-box;
+    font-family: 'Open Sans', 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-background);
+    color: var(--color-text);
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 300px;
+    background-color: var(--color-sidebar-bg);
+    color: var(--color-white);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: normal;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.logo .maze {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+.logo .bank {
+    font-family: 'Open Sans', 'Roboto', sans-serif;
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.user-info h3 {
+    margin: 0;
+    font-size: 18px;
+    color: var(--color-white);
+}
+
+.user-info p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+}
+
+.nav-icons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.nav-icon-item {
+    background-color: var(--color-icon-bg);
+    border-radius: 6px;
+    padding: 15px 10px;
+    text-align: center;
+    color: var(--color-white);
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.2;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ítem activo: Supervisión de Crédito */
+.nav-icon-item:nth-child(3) {
+    background-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-white);
+    font-weight: bold;
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.content-area {
+    flex-grow: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-card {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    flex-grow: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.content-header {
+    width: 100%;
+    text-align: left;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--color-primary);
+}
+
+.content-header h1 {
+    margin: 0;
+    color: var(--color-secondary);
+    font-size: 28px;
+    text-transform: uppercase;
+}
+
+.content-header p {
+    font-size: 14px;
+    color: var(--color-text);
+    margin-top: 5px;
+}
+
+/* --- FILTROS Y CONTROLES --- */
+.controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.filter-group label {
+    font-weight: 600;
+    color: var(--color-strong-text);
+    font-size: 14px;
+}
+
+.filter-group select,
+.filter-group input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.btn-export {
+    background-color: var(--color-info);
+    color: var(--color-white);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn-export:hover {
+    background-color: #2980b9;
+}
+
+/* --- TABLA DE CARTERA (CORE) --- */
+.credit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+.credit-table th {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    text-align: left;
+    padding: 12px 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.credit-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.credit-table tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* Estilos específicos de Datos */
+.monto {
+    font-weight: bold;
+    color: var(--color-strong-text);
+}
+
+.estatus-badge {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.estatus-badge.bajo {
+    background-color: var(--color-success);
+    color: var(--color-white);
+}
+
+.estatus-badge.medio {
+    background-color: var(--color-warning);
+    color: var(--color-strong-text);
+}
+
+.estatus-badge.alto {
+    background-color: var(--color-alert);
+    color: var(--color-white);
+}
+
+.btn-detail {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-detail:hover {
+    background-color: #000000;
+}

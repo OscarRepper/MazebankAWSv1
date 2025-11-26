@@ -7,16 +7,16 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ RouterLink, FormsModule, RouterModule, HttpClientModule ],
+  imports: [RouterLink, FormsModule, RouterModule, HttpClientModule],
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
 export class Login {
-  email: string = ''; 
+  email: string = '';
   password: string = '';
 
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient) { }
 
   login() {
     if (!this.email || !this.password) {
@@ -35,25 +35,26 @@ export class Login {
       (res: any) => {
         if (res.status === 'success') {
 
-          localStorage.setItem('usuario', JSON.stringify({ 
-            email: this.email, 
+          localStorage.setItem('usuario', JSON.stringify({
+            user_id: res.user_id,
+            email: this.email,
             role_id: res.role_id
-          }));
+          }));
 
-          if(res.role_id === 1){
+          if (res.role_id === 1) {
             this.router.navigate(['/main-menu']);
           }
 
-          if(res.role_id === 2){
+          if (res.role_id === 2) {
             this.router.navigate(['/main-administrador']);
           }
 
-          if(res.role_id === 3){
+          if (res.role_id === 3) {
             this.router.navigate(['/main-administrador']);
           }
 
           alert('Login exitoso');
-        } 
+        }
         else {
           alert(res.message);
         }
@@ -61,8 +62,8 @@ export class Login {
       (err) => {
         console.error(err);
         alert('Error en el login. Intenta nuevamente.');
-      }
-    );
-  }
+      }
+    );
+  }
 
 }

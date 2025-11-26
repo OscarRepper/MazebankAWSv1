@@ -1,0 +1,127 @@
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <span class="maze">MAZE</span><span class="bank">BANK</span>
+            </div>
+            
+            <div class="user-info">
+                <h3>Administrador Principal</h3>
+                <p>Nivel: GLOBAL-ADM</p>
+            </div>
+            
+            <div class="nav-icons-container">
+                <div class="nav-icon-item">
+                    <img src="icons/configuracion.png" alt="Configuración" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Configuración Global
+                </div>
+                <div class="nav-icon-item active">
+                    <img src="icons/usuario.png" alt="Usuario" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Gestión de Usuarios
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/informe.png" alt="Informe" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Auditoría General
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/mantenimiento.png" alt="Mantenimiento" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Mantenimiento de Sistema
+                </div>
+                <div class="nav-icon-item">
+                    <img src="icons/cerrar-sesion.png" alt="Cerrar Sesión" style="width:28px;height:28px;margin-bottom:6px;" />
+                    Cerrar Sesión
+                </div>
+            </div>
+        </aside>
+
+        <main class="content-area">
+            <div class="main-card">
+                <div class="content-header">
+                    <h1>GESTIÓN Y EDICIÓN DE CLIENTES / USUARIOS</h1>
+                    <p>Herramientas de edición y administración de cuentas de clientes y personal interno.</p>
+                </div>
+                
+                <div class="management-bar">
+                    <div class="search-group">
+                        <input type="text" id="search-query" placeholder="Buscar por Nombre o ID..." />
+                        
+                        <select id="filter-type">
+                            <option value="all">Todos los Tipos</option>
+                            <option value="client">Clientes</option>
+                            <option value="internal">Personal Interno</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn-add-admin" onclick="alert('Redirigir a la pantalla de Creación de Administrador')">
+                        + Añadir Administrador/Personal
+                    </button>
+                </div>
+
+                <div style="overflow-x: auto; flex-grow: 1;">
+                    <table class="user-table">
+                        <thead>
+                            <tr>
+                                <th>ID Cuenta</th>
+                                <th>Nombre Completo</th>
+                                <th>Rol/Tipo</th>
+                                <th>Correo</th>
+                                <th>Estatus</th>
+                                <th>Última Conexión</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>OP-100</td>
+                                <td>Ana Gómez (Gerente)</td>
+                                <td><span class="tag interno">Gerente</span></td>
+                                <td>ana.gomez@maze.com</td>
+                                <td><span class="tag activo">Activo</span></td>
+                                <td>Hoy 14:30</td>
+                                <td>
+                                    <button class="btn-action btn-edit">Editar Permisos</button>
+                                    <button class="btn-action btn-suspend">Suspender</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CLNT-055</td>
+                                <td>Jorge Valdés</td>
+                                <td><span class="tag cliente">Cliente</span></td>
+                                <td>jorge.v@mail.com</td>
+                                <td><span class="tag activo">Activo</span></td>
+                                <td>Ayer 10:00</td>
+                                <td>
+                                    <button class="btn-action btn-edit">Editar Perfil</button>
+                                    <button class="btn-action btn-suspend">Suspender</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>OP-120</td>
+                                <td>Laura Díaz</td>
+                                <td><span class="tag interno">Ejecutivo</span></td>
+                                <td>laura.d@maze.com</td>
+                                <td><span class="tag suspendido">Suspendido</span></td>
+                                <td>Hace 2 meses</td>
+                                <td>
+                                    <button class="btn-action btn-edit">Reactivar</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CLNT-088</td>
+                                <td>Carlos Ruiz</td>
+                                <td><span class="tag cliente">Cliente</span></td>
+                                <td>c.ruiz@mail.com</td>
+                                <td><span class="tag suspendido">Baja/Bloqueado</span></td>
+                                <td>N/A</td>
+                                <td>
+                                    <button class="btn-action btn-edit">Ver Historial</button>
+                                    <button class="btn-action btn-edit" style="background-color: #3498db; color: white;">Reactivar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>

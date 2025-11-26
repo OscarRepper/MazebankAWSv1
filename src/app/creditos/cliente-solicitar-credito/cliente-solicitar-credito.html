@@ -1,0 +1,135 @@
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="logo"><span class="maze">MAZE</span><span class="bank">BANK</span></div>
+
+      <nav class="nav-links">
+        <a href="#"> Dashboard</a>
+        <a href="#"> Cuentas</a>
+        <a href="#" class="active-link"> Solicitar Crédito</a>
+        <a href="#"> Soporte</a>
+        <a href="#"> Cerrar Sesión</a>
+      </nav>
+    </aside>
+
+    <main class="content-area">
+      <div class="main-card">
+        <div class="content-header">
+          <h1>Solicitud de Línea de Crédito Express</h1>
+          <p>Completa las secciones 1 a 3 para iniciar tu proceso. La validación es automática.</p>
+        </div>
+
+        <form id="credit-request-form">
+          <div class="form-section">
+            <h2><span>1</span> Define tu Crédito</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="amount">Monto Solicitado (MXN)</label>
+                <input
+                  type="number"
+                  id="amount"
+                  name="amount"
+                  placeholder="Mínimo $5,000.00"
+                  min="5000"
+                  max="500000"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="term">Plazo Deseado (Meses)</label>
+                <select id="term" name="term" required>
+                  <option value="">Seleccione plazo...</option>
+                  <option value="6">6 Meses</option>
+                  <option value="12">12 Meses</option>
+                  <option value="18">18 Meses</option>
+                  <option value="24">24 Meses</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2><span>2</span> Información de Ingresos</h2>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="monthly-income">Ingreso Mensual Comprobado (MXN)</label>
+                <input
+                  type="number"
+                  id="monthly-income"
+                  name="monthly-income"
+                  placeholder="Total neto mensual"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="employment-status">Situación Laboral Actual</label>
+                <select id="employment-status" name="employment-status" required>
+                  <option value="">Seleccione situación...</option>
+                  <option value="empleado">Empleado con nómina fija</option>
+                  <option value="independiente">Independiente/Freelancer</option>
+                  <option value="negocio">Dueño de Negocio</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="employment-time">Antigüedad Laboral (Años)</label>
+              <input
+                type="number"
+                id="employment-time"
+                name="employment-time"
+                placeholder="Ej: 3"
+                min="0"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2><span>3</span> Carga de Documentos (Validación INE)</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="ine-front">Identificación Oficial (INE) - FRENTE</label>
+                <input type="file" id="ine-front" name="ine-front" accept=".jpg, .png" required />
+              </div>
+              <div class="form-group">
+                <label for="income-proof">Comprobante de Ingresos (Últimos 3 meses)</label>
+                <input type="file" id="income-proof" name="income-proof" accept=".pdf" required />
+              </div>
+            </div>
+            <p style="font-size: 13px; color: var(--color-info)">
+              *El sistema procesará tu INE para verificar su autenticidad. Este paso es
+              **obligatorio** para continuar.
+            </p>
+          </div>
+
+          <div class="form-section" style="border-bottom: none">
+            <h2><span>4</span> Autorizaciones Legales Finales</h2>
+
+            <div class="legal-checkbox">
+              <input type="checkbox" id="autoriza-buro" required />
+              <label for="autoriza-buro">
+                **Autorizo** a MAZEBANK a consultar mi historial crediticio ante las Sociedades de
+                Información Crediticia (Buró de Crédito).
+              </label>
+            </div>
+
+            <div class="legal-checkbox">
+              <input type="checkbox" id="acepta-terminos" required />
+              <label for="acepta-terminos">
+                He leído y acepto los <a href="#">Términos y Condiciones</a>, la
+                <a href="#">Política de Privacidad</a> y el aviso de **Comisiones** aplicables.
+              </label>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submit-button">
+              Enviar Solicitud y Obtener Respuesta Preliminar
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+</body>

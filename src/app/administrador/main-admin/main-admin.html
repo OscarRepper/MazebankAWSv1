@@ -1,1 +1,307 @@
-<p>main-admin works!</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MazeBank — Admin</title>
+
+  <!-- Inknut Antiqua -->
+  <link href="https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand:#7b0c16;
+      --brand-2:#a0111d;
+      --bg:#0f1115;
+      --panel:#141821;
+      --card:#1a1f2b;
+      --card-2:#131824;
+      --text:#e6e8ee;
+      --muted:#9aa4b2;
+      --success:#2ea043;
+      --warn:#f59e0b;
+      --danger:#dc2626;
+      --radius:16px;
+      --shadow: 0 12px 30px rgba(0,0,0,.25);
+      --border: 1px solid rgba(255,255,255,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#0b0d12, #0e1016 40%, #0b0d12);
+      color:var(--text);
+      font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+    }
+
+    .app{
+      min-height:100svh;
+      display:grid;
+      grid-template-columns: 260px 1fr;
+    }
+    @media (max-width: 960px){
+      .app{ grid-template-columns: 1fr; }
+      .sidebar{ position:sticky; top:0; z-index:20; }
+      .sidebar .nav{ display:grid; grid-auto-flow:column; overflow:auto; gap:8px; }
+      .sidebar .nav a{ white-space:nowrap; }
+    }
+
+    .sidebar{
+      background:linear-gradient(180deg,#121625,#0e121d);
+      border-right:var(--border);
+      padding:22px 18px;
+    }
+    .logo{ display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px; margin-bottom:18px; font-size:20px; }
+    .logo-mark{
+      width:34px;height:34px;border-radius:10px;
+      background: conic-gradient(from 135deg, var(--brand), var(--brand-2));
+      display:grid;place-items:center; color:white; font-weight:900;
+      box-shadow: 0 8px 20px rgba(123,12,22,.45);
+    }
+    .logo span{color:var(--muted); font-weight:700}
+    .section-title{ margin:18px 0 10px; color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.12em; }
+    .nav{ display:grid; gap:6px; }
+    .nav a{
+      display:flex; align-items:center; gap:10px;
+      padding:10px 12px; border-radius:12px; text-decoration:none; color:var(--text);
+      border:var(--border); background:linear-gradient(180deg,#121722,#101420);
+      transition:transform .12s ease, background .2s ease, border-color .2s ease;
+    }
+    .nav a:hover{ transform:translateY(-1px); background:linear-gradient(180deg,#141a27,#111623); border-color:rgba(255,255,255,.12); }
+    .nav a.active{ background:linear-gradient(180deg,#1a2232,#141c2b); border-color:rgba(255,255,255,.18); }
+    .dot{ width:10px;height:10px;border-radius:50%; background:var(--brand); box-shadow:0 0 0 3px rgba(123,12,22,.25) inset; }
+
+    .main{ padding:22px; display:grid; gap:18px; }
+
+    .topbar{ display:flex; align-items:center; gap:12px; justify-content:space-between; }
+    .breadcrumbs{ color:var(--muted); font-size:13px; }
+    .breadcrumbs b{ color:var(--text); }
+    .search{
+      display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px;
+      background:var(--panel); border:var(--border); min-width:260px; flex:1; max-width:520px;
+    }
+    .search input{ background:transparent; border:0; outline:0; color:var(--text); width:100%; }
+    .avatar{
+      display:flex; align-items:center; gap:10px;
+      background:var(--panel); border:var(--border); padding:6px 10px; border-radius:999px;
+    }
+    .badge{
+      width:30px;height:30px;border-radius:999px;background:linear-gradient(180deg,#1c2434,#141b28);
+      display:grid; place-items:center; font-weight:800; color:#fff; border:1px solid rgba(255,255,255,.08);
+    }
+    .role{ font-size:12px; color:var(--muted); }
+
+    .cards{ display:grid; gap:14px; grid-template-columns: repeat(4, 1fr); }
+    @media (max-width: 1200px){ .cards{ grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px){ .cards{ grid-template-columns: 1fr; } }
+    .card{
+      background:linear-gradient(180deg, var(--card), var(--card-2));
+      border:var(--border); border-radius:var(--radius); padding:16px; box-shadow:var(--shadow);
+    }
+    .card .label{ color:var(--muted); font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+    .card .value{ font-size:26px; font-weight:800; margin-top:6px; }
+    .trend{ font-size:12px; margin-top:6px; }
+    .trend.up{ color:var(--success); }
+    .trend.down{ color:var(--danger); }
+
+    .grid{ display:grid; gap:14px; grid-template-columns: 2fr 1fr; }
+    @media (max-width: 1200px){ .grid{ grid-template-columns: 1fr; } }
+
+    .table{
+      background:linear-gradient(180deg, var(--card), var(--card-2));
+      border:var(--border); border-radius:var(--radius); box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .table header{ display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:var(--border); }
+    table{ width:100%; border-collapse:collapse; }
+    th, td{ padding:12px 14px; border-bottom:var(--border); text-align:left; }
+    th{ font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.08em; }
+    tr:hover td{ background:rgba(255,255,255,.02); }
+
+    .panel{
+      background:linear-gradient(180deg, var(--card), var(--card-2));
+      border:var(--border); border-radius:var(--radius); box-shadow:var(--shadow); padding:16px;
+    }
+    .panel h3{ margin:0 0 10px; }
+    .actions{ display:grid; gap:10px; }
+    .btn{
+      border:var(--border); background:linear-gradient(180deg,#161c2a,#131925);
+      color:var(--text); padding:10px 12px; border-radius:12px; font-weight:600; cursor:pointer;
+      display:flex; align-items:center; gap:10px; text-decoration:none; justify-content:center;
+      transition: transform .12s ease, background .2s ease, border-color .2s ease;
+    }
+    .btn:hover{ transform:translateY(-1px); border-color:rgba(255,255,255,.16); background:linear-gradient(180deg,#182031,#141c2a); }
+    .btn.primary{ background:linear-gradient(180deg, var(--brand-2), var(--brand)); border-color:rgba(255,255,255,.2); }
+    .btn.primary:hover{ filter:brightness(1.05); }
+    .hint{ color:var(--muted); font-size:12px; margin-top:8px; }
+    .i{ width:10px; height:10px; border-radius:50%; background:currentColor; opacity:.9; }
+
+    /* ====== TUS COLORES (sobrescriben lo anterior) ====== */
+    #body{
+      /* ⬇⬇⬇  AJUSTA AQUÍ EL TAMAÑO DE LOS BOTONES  ⬇⬇⬇ */
+      --tile: 140px;          /* tamaño de cada botón */
+      --tile-radius: 26px;    /* redondeado fuerte */
+
+      font-family: 'Inknut Antiqua', serif;
+      background-color: #4d0101;
+      color: white;
+      height: 100vh;
+      overflow: hidden;
+    }
+    /* Asegura que todo herede la tipografía y color */
+    #body *{ font-family: inherit; color: inherit; }
+    /* Ajuste de paneles para que se vean bien con el fondo borgoña */
+    #body .sidebar,
+    #body .card,
+    #body .panel,
+    #body .search,
+    #body .avatar,
+    #body .table { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); }
+    #body .muted, #body .section-title, #body .breadcrumbs, #body .role, #body th { color: rgba(255,255,255,0.78); }
+    #body .nav a{ background: rgba(255,255,255,0.06); }
+    #body .nav a.active{ background: rgba(255,255,255,0.12); }
+  </style>
+</head>
+
+<body id="body">
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="logo">
+        <div class="logo-mark">MZ</div>
+        <div>MAZE<span>BANK</span></div>
+      </div>
+
+      <div class="section-title">Administración</div>
+      <nav class="nav">
+        <a class="active" href="#"><span class="dot"></span> Dashboard</a>
+        <a href="#"><span class="dot"></span> Usuarios</a>
+        <a href="#"><span class="dot"></span> Cuentas</a>
+        <a href="#"><span class="dot"></span> Transacciones</a>
+        <a href="#"><span class="dot"></span> Auditoría</a>
+        <a href="#"><span class="dot"></span> Configuración</a>
+      </nav>
+
+      <div class="section-title">Sistema</div>
+      <nav class="nav">
+        <a href="#"><span class="dot"></span> Roles & Permisos</a>
+        <a href="#"><span class="dot"></span> Reportes</a>
+        <a href="#"><span class="dot"></span> Salir</a>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- TOPBAR -->
+      <div class="topbar">
+        <div class="breadcrumbs">Administración / <b>Dashboard</b></div>
+        <div style="display:flex; gap:10px; align-items:center; width:100%; justify-content:flex-end;">
+          <div class="search">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 4a6 6 0 014.472 9.999l4.264 4.265-1.414 1.414-4.265-4.264A6 6 0 1110 4m0 2a4 4 0 100 8 4 4 0 000-8Z"/></svg>
+            <input type="search" placeholder="Buscar usuario, cuenta, transacción..." />
+          </div>
+          <div class="avatar">
+            <div class="badge">AD</div>
+            <div>
+              <div style="font-weight:700">Admin</div>
+              <div class="role">Superusuario</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI CARDS -->
+      <section class="cards">
+        <article class="card">
+          <div class="label">Usuarios activos</div>
+          <div class="value">1,284</div>
+          <div class="trend up">▲ 3.1% hoy</div>
+        </article>
+        <article class="card">
+          <div class="label">Cuentas totales</div>
+          <div class="value">12,457</div>
+          <div class="trend up">▲ 0.8% mes</div>
+        </article>
+        <article class="card">
+          <div class="label">Transacciones (24h)</div>
+          <div class="value">8,903</div>
+          <div class="trend down">▼ 1.2% vs. ayer</div>
+        </article>
+        <article class="card">
+          <div class="label">Alertas</div>
+          <div class="value" style="color:#fcd34d">17</div>
+          <div class="trend">Revisar prioridad</div>
+        </article>
+      </section>
+
+      <!-- GRID -->
+      <section class="grid">
+        <!-- TABLE -->
+        <div class="table">
+          <header>
+            <h3 style="margin:0">Últimas transacciones</h3>
+            <a class="btn" href="#"><span class="i" aria-hidden="true"></span> Ver todo</a>
+          </header>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Cliente</th>
+                <th>Tipo</th>
+                <th>Monto</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#TX-98421</td>
+                <td>25/09/2025 07:41</td>
+                <td>Juan Pérez</td>
+                <td>Transferencia</td>
+                <td>$ 12,500.00</td>
+                <td><span style="color:#34d399; font-weight:700;">Aprobada</span></td>
+              </tr>
+              <tr>
+                <td>#TX-98420</td>
+                <td>25/09/2025 07:33</td>
+                <td>María García</td>
+                <td>Depósito</td>
+                <td>$ 2,000.00</td>
+                <td><span style="color:#34d399; font-weight:700;">Aprobada</span></td>
+              </tr>
+              <tr>
+                <td>#TX-98419</td>
+                <td>25/09/2025 07:10</td>
+                <td>Carlos Díaz</td>
+                <td>Retiro</td>
+                <td>$ 1,200.00</td>
+                <td><span style="color:#fde68a; font-weight:700;">Pendiente</span></td>
+              </tr>
+              <tr>
+                <td>#TX-98418</td>
+                <td>25/09/2025 06:58</td>
+                <td>Laura Romero</td>
+                <td>Pago</td>
+                <td>$ 799.00</td>
+                <td><span style="color:#f87171; font-weight:700;">Rechazada</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- ACTIONS -->
+        <aside class="panel">
+          <h3>Acciones rápidas</h3>
+          <div class="actions">
+            <a class="btn primary" href="#"><span class="i" aria-hidden="true"></span> Crear usuario</a>
+            <a class="btn" href="#"><span class="i" aria-hidden="true"></span> Congelar cuenta</a>
+            <a class="btn" href="#"><span class="i" aria-hidden="true"></span> Revisar alertas AML</a>
+            <a class="btn" href="#"><span class="i" aria-hidden="true"></span> Exportar reporte</a>
+          </div>
+          <p class="hint">Consejo: usa el buscador para localizar cuentas por nombre o ID.</p>
+        </aside>
+      </section>
+    </main>
+  </div>
+</body>
+</html>

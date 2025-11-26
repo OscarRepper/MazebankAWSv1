@@ -1,0 +1,326 @@
+/* ====== VARIABLES DENTRO DEL CONTENEDOR DEL COMPONENTE ====== */
+#body {
+  /* ⬇⬇⬇  AJUSTA AQUÍ EL TAMAÑO DE LOS BOTONES  ⬇⬇⬇
+     (antes 180px; lo bajé un poco como pediste) */
+  --tile: 140px;
+  /* tamaño de cada botón */
+  --tile-radius: 26px;
+  /* redondeado fuerte */
+  font-family: 'Inknut Antiqua', serif;
+  background-color: #4d0101;
+  color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Layout base */
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+}
+
+.main-left,
+.main-right {
+  height: 100%;
+}
+
+.main-left {
+  width: 50%;
+  display: grid;
+  padding: 2rem;
+}
+
+.main-right {
+  width: 50%;
+  display: grid;
+  place-items: center;
+  padding: 0;
+}
+
+/* Panel izquierdo centrado */
+.left-body {
+  display: grid;
+  grid-auto-rows: max-content;
+  gap: 2rem;
+  place-content: center;
+  justify-items: center;
+  width: 100%;
+}
+
+/* Logo centrado */
+.logo {
+  font-size: 2rem;
+  font-weight: 800;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.logo span {
+  color: #ff3b3b;
+}
+
+/* Bienvenida + buscador */
+.welcome {
+  width: 100%;
+  max-width: 540px;
+  text-align: center;
+}
+
+.welcome h2 {
+  font-size: 1.3rem;
+}
+
+.welcome p {
+  font-size: 0.9rem;
+  color: #ddd;
+  margin-bottom: 1rem;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 540px;
+}
+
+.search-bar img {
+  width: 20px;
+  margin-right: 0.6rem;
+}
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  outline: none;
+  color: white;
+  flex: 1;
+}
+
+/* ====== MENÚ 3×2, BOTONES IGUALES Y REDONDEADOS ====== */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, var(--tile));
+  /* 3 columnas fijas */
+  grid-auto-rows: var(--tile);
+  /* alto igual al ancho -> cuadrados */
+  gap: 1.4rem;
+  justify-content: center;
+  /* centra el grid */
+  width: 100%;
+  max-width: calc(3 * var(--tile) + 2 * 1.4rem);
+  /* ancho exacto del grid */
+}
+
+.menu-box {
+  width: var(--tile);
+  height: var(--tile);
+  border-radius: var(--tile-radius);
+  background: #a91e1e;
+  color: #fff;
+  font-weight: 700;
+  /* bold */
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, .35), inset 0 0 0 1px rgba(255, 255, 255, .08);
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+  cursor: pointer;
+}
+
+/* ⬇⬇⬇  AJUSTA AQUÍ EL TAMAÑO DEL ÍCONO DENTRO DEL BOTÓN  ⬇⬇⬇
+   (si bajas --tile, baja un poco este width también) */
+.menu-box img {
+  width: 56px;
+  margin-bottom: 0.55rem;
+}
+
+.menu-box:hover {
+  background-color: #c62828;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .4), 0 0 10px rgba(255, 255, 255, .35) inset;
+}
+
+/* ====== PANEL DERECHO (CUADRO BLANCO CUADRADO GRANDE) ====== */
+#contenido-dinamico {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  padding: 1.2rem;
+}
+
+#contenido-dinamico>.modal-container {
+  background: #fff;
+  border-radius: 24px;
+  padding: 1.2rem;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.modal-square {
+  width: clamp(580px, 92vh, 1000px);
+  aspect-ratio: 1 / 1;
+  max-width: 92%;
+  border: 6px solid #4d0101;
+}
+
+/* Encabezado / contenido / pie del modal */
+.modal-header {
+  text-align: center;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 1rem;
+}
+
+.modal-header h1 {
+  font-size: 1.6rem;
+  color: #222;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.modal-content {
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0.25rem 0.25rem 0.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  border-top: 2px solid #f0f0f0;
+}
+
+/* Perfil (dentro del panel) */
+.profile-avatar {
+  font-size: 4rem;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.profile-info {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.info-row:last-child {
+  border-bottom: none;
+}
+
+.label {
+  font-weight: bold;
+  color: #333;
+}
+
+.value {
+  color: #666;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Botones del panel */
+.btn-secondary,
+.btn-danger {
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+}
+
+.btn-secondary:hover {
+  background: #5a6268;
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: #dc3545;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+}
+
+.btn-danger:hover {
+  background: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Scrollbar del contenido del modal */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Ajuste responsive (opcional) */
+@media (max-width: 1200px) {
+  #body {
+    --tile: 160px;
+  }
+}
+
+@media (max-width: 1050px) {
+  #body {
+    --tile: 148px;
+  }
+}
+
+
+/* === Forzar texto negro solo en los valores del perfil === */
+.profile-info .value,
+.rol-info,
+.rol-info2 {
+  color: #000 !important;
+}
